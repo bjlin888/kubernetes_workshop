@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-deployment
+  name: hello-spring-boot-deployment
   labels:
     app: hello-spring-boot
 spec:
@@ -15,18 +15,18 @@ spec:
         app: hello-spring-boot
     spec:
       containers:
-      - name: spring-boot-example
+      - name: hello-spring-boot
         image: bjlin888/eyesmedia-springboot-sample:1.0.0
         env:
         - name: SERVER_PORT
           value: "10000"
         ports:
         - containerPort: 10000
-          name: spring-boot-svc
+          name: hello-cport
         readinessProbe:
           httpGet:
             path: /sample/actuator/health
-            port: spring-boot-svc
+            port: hello-cport
           initialDelaySeconds: 60
           timeoutSeconds: 10
           periodSeconds: 3
@@ -34,7 +34,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /sample/actuator/health
-            port: spring-boot-svc
+            port: hello-cport
           initialDelaySeconds: 120
           timeoutSeconds: 2
           periodSeconds: 8
@@ -43,11 +43,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: spring-boot-service
+  name: hello-springboot-svc
 spec:
   selector:
     app: hello-spring-boot
   ports:
     - protocol: TCP
       port: 9091
-      targetPort: spring-boot-svc
+      targetPort: hello-cport
