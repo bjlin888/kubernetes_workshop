@@ -17,6 +17,6 @@ spec:
         path: /sample
         backend:
           service:
-            name: hello-springboot-svc
+            name: spring-boot-service
             port:
               number: 9091

@@ -16,7 +16,7 @@ spec:
         app: hello-spring-boot
     spec:
       containers:
-      - name: spring-boot-example
+      - name: hello-spring-boot
         image: bjlin888/eyesmedia-springboot-sample:1.0.0
         env:
         - name: SERVER_PORT
