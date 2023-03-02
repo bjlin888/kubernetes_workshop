@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-boot-deployment
-  namespace: hello-kubernetes
+  namespace: workshop1
   labels:
     app: hello-spring-boot
 spec:
@@ -17,10 +17,12 @@ spec:
     spec:
       containers:
       - name: hello-spring-boot
-        image: bjlin888/eyesmedia-springboot-sample:1.0.0
+        image: bjlin888/eyesmedia-springboot-sample:1.0.1
         env:
         - name: SERVER_PORT
           value: "10000"
+        - name: CONTEXT_PATH
+          value: workshop1
         ports:
         - containerPort: 10000
           name: spring-boot-svc
