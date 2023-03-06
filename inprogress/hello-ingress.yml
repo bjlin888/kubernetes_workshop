@@ -3,18 +3,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hello-ingress
-  namespace: default
+  name: hello-ingress-workshop1
+  namespace: workshop1
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-  - host: localhost
+  - host: workshop1.localhost
     http:
       paths:
       - pathType: Prefix
-        path: /sample
+        path: /workshop1
         backend:
           service:
             name: spring-boot-service
